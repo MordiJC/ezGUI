@@ -1,0 +1,9 @@
+*.[ao]
+build/
+*.so
+*.exe
+*.dll
+*.dat
+*.zip
+*.rar
+.vscode/
