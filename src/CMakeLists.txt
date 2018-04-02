@@ -14,7 +14,7 @@ target_include_directories(ezGUI
 )
 
 target_compile_features(ezGUI
-    PRIVATE
+    PUBLIC
         c_std_99
         c_function_prototypes
         c_restrict

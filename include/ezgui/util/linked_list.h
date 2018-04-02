@@ -28,4 +28,6 @@ int LinkedList_destroy(LinkedList * list);
 
 int LinkedList_move_to_top(LinkedList * list, unsigned int index);
 
+void * LinkedList_get_at(LinkedList * list, unsigned int index);
+
 #endif /* EZGUI_UTIL_LINKED_LIST_H_ */

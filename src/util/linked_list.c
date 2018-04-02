@@ -117,7 +117,7 @@ int LinkedList_remove_at(LinkedList* list, unsigned int index) {
     LinkedListNode* currentNode = list->root;
     unsigned int currentIndex = 0;
 
-    while (currentNode->next != NULL && currentIndex != index) {
+    while (currentNode != NULL && currentIndex != index) {
         currentNode = currentNode->next;
         currentIndex++;
     }
@@ -134,6 +134,8 @@ int LinkedList_remove_at(LinkedList* list, unsigned int index) {
     }
 
     LinkedListNode_destroy(nodeToDestroy);
+
+    list->size--;
 
     return 0;
 }
@@ -174,7 +176,7 @@ int LinkedList_move_to_top(LinkedList* list, unsigned int index) {
     LinkedListNode* currentNode = list->root;
     unsigned int currentIndex = 0;
 
-    while (currentNode->next != NULL && currentIndex != index) {
+    while (currentNode != NULL && currentIndex != index) {
         currentNode = currentNode->next;
         currentIndex++;
     }
@@ -196,4 +198,28 @@ int LinkedList_move_to_top(LinkedList* list, unsigned int index) {
     list->root = nodeToMove;
 
     return 0;
+}
+
+void * LinkedList_get_at(LinkedList * list, unsigned int index) {
+    if (list == NULL || list->root == NULL || index >= list->size) {
+        return -1;
+    }
+
+    if(index == 0) {
+        return 0;
+    }
+
+    LinkedListNode* currentNode = list->root;
+    unsigned int currentIndex = 0;
+
+    while (currentNode != NULL && currentIndex != index) {
+        currentNode = currentNode->next;
+        currentIndex++;
+    }
+
+    if (currentIndex != index) {
+        return -1;
+    }
+
+    return currentNode->data;
 }
